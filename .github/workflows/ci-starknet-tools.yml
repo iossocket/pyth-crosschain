@@ -1,9 +1,6 @@
 name: Check Starknet Tools
 
 on:
-  pull_request:
-    paths:
-      - target_chains/starknet/tools/**
   push:
     branches: [main]
 jobs:

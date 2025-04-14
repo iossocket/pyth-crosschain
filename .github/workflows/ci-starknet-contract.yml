@@ -1,8 +1,5 @@
 name: Starknet contract
 on:
-  pull_request:
-    paths:
-      - target_chains/starknet/contracts/**
   push:
     branches:
       - main
