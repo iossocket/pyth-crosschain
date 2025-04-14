@@ -66,10 +66,14 @@ pub fn print_as_cairo_fn(data: &[u8], name: impl Display, comment: impl Display)
     } else if comment.contains("wormhole governance guardian set upgrade instruction") {
         println!("// A wormhole governance guardian set upgrade instruction signed by test guardian #1 containing test");
         println!("// guardian #2 as the new guardian set.");
-    } else if comment.contains("Pyth governance instruction to request governance data source transfer") {
+    } else if comment
+        .contains("Pyth governance instruction to request governance data source transfer")
+    {
         println!("// A Pyth governance instruction to request governance data source transfer signed by the test");
         println!("// guardian #1.");
-    } else if comment.contains("Pyth governance instruction to authorize governance data source transfer") {
+    } else if comment
+        .contains("Pyth governance instruction to authorize governance data source transfer")
+    {
         println!("// A Pyth governance instruction to authorize governance data source transfer signed by the test");
         println!("// guardian #1.");
     } else {
