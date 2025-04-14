@@ -58,30 +58,7 @@ pub fn print_as_cli_input(data: &[u8]) {
 /// Print data in the format suitable for embedding in tests.
 pub fn print_as_cairo_fn(data: &[u8], name: impl Display, comment: impl Display) {
     println!();
-    let comment = comment.to_string();
-    // Special handling for specific comment patterns
-    if comment.contains("mainnet wormhole governance VAA") {
-        println!("// An actual mainnet wormhole governance VAA from");
-        println!("// https://github.com/pyth-network/pyth-crosschain/blob/main/contract_manager/src/contracts/wormhole.ts#L32-L37");
-    } else if comment.contains("wormhole governance guardian set upgrade instruction") {
-        println!("// A wormhole governance guardian set upgrade instruction signed by test guardian #1 containing test");
-        println!("// guardian #2 as the new guardian set.");
-    } else if comment
-        .contains("Pyth governance instruction to request governance data source transfer")
-    {
-        println!("// A Pyth governance instruction to request governance data source transfer signed by the test");
-        println!("// guardian #1.");
-    } else if comment
-        .contains("Pyth governance instruction to authorize governance data source transfer")
-    {
-        println!("// A Pyth governance instruction to authorize governance data source transfer signed by the test");
-        println!("// guardian #1.");
-    } else {
-        // Default case: split on newlines
-        for line in comment.lines() {
-            println!("// {line}");
-        }
-    }
+    println!("// {comment}");
     let data = to_cairo_byte_array_data(data);
     println!("pub fn {name}() -> ByteBuffer {{");
     println!("    let bytes = array![");
