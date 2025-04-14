@@ -36,8 +36,10 @@ jobs:
         run: cargo run --manifest-path ./target_chains/starknet/tools/test_vaas/Cargo.toml --bin generate_keypair
       - name: Check test data
         run: |
-          . ~/.config/.starkli/env && cargo run --manifest-path ./target_chains/starknet/tools/test_vaas/Cargo.toml --bin generate_test_data > /tmp/data.cairo
-          if ! diff ./target_chains/starknet/contracts/tests/data.cairo /tmp/data.cairo; then
+          . ~/.config/.starkli/env && cargo run --manifest-path ./target_chains/starknet/tools/test_vaas/Cargo.toml --bin generate_test_data > ./target_chains/starknet/contracts/tmp/data.cairo
+          cd target_chains/starknet/contracts
+          scarb fmt ./tmp/data.cairo
+          if ! diff ./tests/data.cairo ./tmp/data.cairo; then
             >&2 echo "Re-run generate_test_data to update data.cairo"
             exit 1
           fi
