@@ -15,10 +15,6 @@ jobs:
           components: rustfmt, clippy
           override: true
       - uses: actions/checkout@v3
-      - name: Clean build
-        run: |
-          cd target_chains/starknet/tools/test_vaas
-          cargo clean
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: "target_chains/starknet/tools/test_vaas -> target"
