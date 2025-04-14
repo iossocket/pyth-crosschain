@@ -58,7 +58,9 @@ pub fn print_as_cli_input(data: &[u8]) {
 /// Print data in the format suitable for embedding in tests.
 pub fn print_as_cairo_fn(data: &[u8], name: impl Display, comment: impl Display) {
     println!();
-    println!("// {comment}");
+    for line in comment.to_string().lines() {
+        println!("// {line}");
+    }
     let data = to_cairo_byte_array_data(data);
     println!("pub fn {name}() -> ByteBuffer {{");
     println!("    let bytes = array![");
