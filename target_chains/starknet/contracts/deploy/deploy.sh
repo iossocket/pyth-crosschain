@@ -23,10 +23,10 @@ if [ "${PYTH_DEPLOY_MODE}" == "devnet" ]; then
 
     chain_id=50075 # starknet_sepolia
 
-    # predeployed fee token contract in katana
+    # predeployed fee token contract in devnet
     fee_token_address1=0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
 
-    # there is no second fee token pre-deployed in katana
+    # there is no second fee token pre-deployed in devnet
     fee_token_address2=0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
 elif [ "${PYTH_DEPLOY_MODE}" == "sepolia" ]; then
     export STARKNET_RPC=https://starknet-sepolia.public.blastapi.io/rpc/v0_6
